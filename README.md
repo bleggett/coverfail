@@ -1,8 +1,11 @@
 # Coverfail
 
-Dumb little tool meant to address the lack of a tool to get a consolidated code
+Dumb little tool to get a consolidated code
 coverage number for all packages in a Golang repo, and return a nonzero exit
-code to the parent process if that number is less than a provided threshold
+code to the parent process if that number is less than a provided threshold.
+
+`go test -cover ./...` will report coverage for each module it finds in the repo separately,
+but cannot give you an overall coverage percentage for all `.go` files found, which this does.
 
 ## Dependencies
 This runs `go test -cover` and parses the output, so if you can build this
