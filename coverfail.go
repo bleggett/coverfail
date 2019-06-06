@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"strconv"
+	"strings"
 	"os"
 	"os/exec"
 	"regexp"
@@ -100,7 +101,7 @@ func parsePackagePercentages(output *bytes.Buffer) float64 {
 	outputStr := output.String()
 	percents := pctMatch.FindAllString(outputStr, -1)
 	for _, pct:= range percents {
-		coveragePct, err := strconv.ParseFloat(pct, 64); if err != nil {
+		coveragePct, err := strconv.ParseFloat(strings.Trim(pct, "%"), 64); if err != nil {
 			panic(fmt.Sprintf("Could not parse code coverage output, error was: %s", err))
 		}
 		total += coveragePct
