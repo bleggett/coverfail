@@ -16,16 +16,16 @@ you can run it.
 
 #### Example output if your code coverage > threshold:
 ```
-Overall code coverage percentage is:  57.5
-Threshold is:  55.6
+Threshold is:  51
+Overall coverage: 51.2% of statements    
 
 (returncode == 0)
-```
+```                                                                                                                                                                       
 
 #### Example output if your code coverage < threshold:
 ```
-Overall code coverage percentage is:  54.5
-Threshold is:  55.6
+Threshold is:  53
+Overall coverage: 51.2% of statements  
 
 Overall coverage is lower than provided threshold number, bailing with nonzero exit code...
 
