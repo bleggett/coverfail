@@ -1,9 +1,9 @@
 # Coverfail
 
-`go test -cover ./...` will report coverage for each module it finds in the repo separately,
-but cannot give you an overall coverage percentage for all modules, which this does.
+`go test -cover ./...` will report coverage for each package it finds in the repo separately,
+but cannot give you an overall coverage percentage for the module, which this does.
 
-Additonally, this lets you return a nonzero exit code to the parent process if the coverage falls
+Additonally, this lets you return a nonzero exit code to the parent process if the module's overall coverage falls
 below a fixed amount provided via an argument. This makes it easy to integrate into most CI systems.
 
 ## Dependencies
