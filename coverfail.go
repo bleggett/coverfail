@@ -86,7 +86,7 @@ func coverage(optArgs []string, threshold float64) error {
 	}
 	totalpct := parsePackagePercentages(stdout)
 	fmt.Println("Threshold is: ", threshold)
-	fmt.Printf("Overall coverage: %.1f%% of statements", totalpct)
+	fmt.Printf("Overall coverage: %.1f%% of statements\n\n", totalpct)
 	if totalpct < threshold {
 		return &ExitError{Code: 1, Msg: "Overall coverage is lower than provided threshold number, bailing with nonzero exit code..."}
 	}
