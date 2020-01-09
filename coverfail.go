@@ -67,7 +67,7 @@ func run(coverprofile string, threshold float64) error {
 func buildOptionalTestArgs(coverprofile string) []string {
 	args := []string{}
 	if coverprofile != "" {
-		args = append(args, "-coverprofile=", coverprofile)
+		args = append(args, "-coverprofile", coverprofile)
 	}
 	return args
 }
