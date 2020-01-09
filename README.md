@@ -3,8 +3,10 @@
 `go test -cover ./...` will report coverage for each package it finds in the repo separately,
 but cannot give you an overall coverage percentage for the whole module, which this does.
 
-Additonally, this lets you return a nonzero exit code to the parent process if the module's overall coverage falls
+Additionally, this lets you return a nonzero exit code to the parent process if the module's overall coverage falls
 below a fixed amount provided via an argument. This makes it easy to integrate into most CI systems.
+
+> NOTE: This was created as a hack to work around the puzzling inability to generate overall coverage for a go module composed of multiple packages and should be abandoned as soon as upstream adds this feature.
 
 ## Dependencies
 This runs `go test -cover` and parses the output, so if you can build this
