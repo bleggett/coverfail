@@ -6,7 +6,7 @@ but cannot give you an overall coverage percentage for the whole module, which t
 Additionally, this lets you return a nonzero exit code to the parent process if the module's overall coverage falls
 below a fixed amount provided via an argument. This makes it easy to integrate into most CI systems.
 
-> NOTE: This was created as a hack to work around the puzzling inability of `go test -cover` to generate overall coverage for a Go module composed of multiple packages, and should be abandoned as soon as upstream adds a more robust implementation of this relatively basic capability.
+> NOTE: This was created as a quick hack to work around the (to me) puzzling inability of `go test -cover` to generate overall coverage for a Go module composed of multiple packages, and should be abandoned as soon as upstream adds a more robust implementation of this relatively basic capability.
 
 ## Dependencies
 This runs `go test -cover` and parses the output, so if you can build this
