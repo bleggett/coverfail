@@ -17,11 +17,13 @@ const usageMessage = "" +
 var (
 	threshold    float64
 	coverprofile string
+	modMode      string
 )
 
 func init() {
 	flag.Float64Var(&threshold, "threshold", 0, "Sets the threshold the actual coverage number will be compared against")
 	flag.StringVar(&coverprofile, "coverprofile", "coverage.out", "Write a coverage profile to the file after all tests have passed")
+	flag.StringVar(&modMode, "mod", "", "Mode for handling modules; select from \"readonly\" or \"vendor\"")
 }
 
 func usage() {
@@ -43,7 +45,7 @@ func (e *ExitError) Error() string {
 func main() {
 	flag.Usage = usage
 	flag.Parse()
-	if err := run(coverprofile, threshold); err != nil {
+	if err := run(coverprofile, threshold, modMode); err != nil {
 		code := 1
 		if err, ok := err.(*ExitError); ok {
 			code = err.Code
@@ -55,8 +57,8 @@ func main() {
 	}
 }
 
-func run(coverprofile string, threshold float64) error {
-	optionalArgs := buildOptionalTestArgs(coverprofile)
+func run(coverprofile string, threshold float64, modMode string) error {
+	optionalArgs := buildOptionalTestArgs(coverprofile, modMode)
 	err := coverage(optionalArgs, threshold)
 	if err != nil {
 		return err
@@ -64,10 +66,13 @@ func run(coverprofile string, threshold float64) error {
 	return nil
 }
 
-func buildOptionalTestArgs(coverprofile string) []string {
+func buildOptionalTestArgs(coverprofile, modMode string) []string {
 	args := []string{}
 	if coverprofile != "" {
 		args = append(args, "-coverprofile", coverprofile)
+	}
+	if modMode != "" {
+		args = append(args, "-mod", modMode)
 	}
 	return args
 }
