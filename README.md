@@ -1,3 +1,5 @@
+> NOTE: This is deprecated in favor of https://github.com/klmitch/overcover
+
 # Coverfail
 
 `go test -cover ./...` will report coverage for each package it finds in the repo separately,
